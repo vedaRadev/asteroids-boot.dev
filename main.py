@@ -24,7 +24,7 @@ def main():
     Player.containers = (updatable, drawable)               # type: ignore
     Asteroid.containers = (asteroids, updatable, drawable)  # type: ignore
     AsteroidField.containers = (updatable)                  # type: ignore
-    Shot.containers = (updatable, drawable)                 # type: ignore
+    Shot.containers = (shots, updatable, drawable)                 # type: ignore
 
     # Check CircleShape to see why this works (hint: it has to do with sprite containers)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
