@@ -23,10 +23,8 @@ def main():
     Asteroid.containers = (asteroids, updatable, drawable)  # type: ignore
     AsteroidField.containers = (updatable)                  # type: ignore
 
-    # Some python black magic to construct the player within its assigned groups or something.
-    # I guess technically it only creates it once then shares a reference to it in each group.
-    # But still, this API where you just instantiate a player
-    Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    # Check CircleShape to see why this works (hint: it has to do with sprite containers)
+    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     AsteroidField()
 
     clock = pygame.time.Clock()
@@ -38,6 +36,11 @@ def main():
 
         for thing in updatable:
             thing.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collided(player):
+                print("Game over!")
+                return
 
         _ = screen.fill("black")
 
