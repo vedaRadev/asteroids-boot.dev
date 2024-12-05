@@ -3,7 +3,7 @@ import pygame
 class CircleShape(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
         if hasattr(self, "containers"):
-            super().__init__(self.containers)
+            super().__init__(self.containers) # type: ignore
         else:
             super().__init__()
 
@@ -12,9 +12,9 @@ class CircleShape(pygame.sprite.Sprite):
         self.radius = radius
 
         # subclasses override
-        def draw(self, screen):
+        def draw(self, screen): # type: ignore
             pass
 
         # subclasses override
-        def update(self, dt):
+        def update(self, dt): # type: ignore
             pass
