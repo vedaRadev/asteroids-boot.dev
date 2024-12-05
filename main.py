@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 def main():
     # os.environ["SDL_VIDEODRIVER"] = "x11"
@@ -18,10 +19,12 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
     
     Player.containers = (updatable, drawable)               # type: ignore
     Asteroid.containers = (asteroids, updatable, drawable)  # type: ignore
     AsteroidField.containers = (updatable)                  # type: ignore
+    Shot.containers = (updatable, drawable)                 # type: ignore
 
     # Check CircleShape to see why this works (hint: it has to do with sprite containers)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
